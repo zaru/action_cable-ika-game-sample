@@ -9,7 +9,7 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
 
   received: (data) ->
     console.log data
-    actions[data.action](data)
+    actions[data.action](data, this)
 
   attack: (position) ->
     ink_type = Math.floor( Math.random() * 12) + 1
@@ -17,6 +17,7 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
 
 
 actions['join'] = (data)->
+  $('.waiting').hide()
   my_color = data.color
   $('.uuid').text(data.uuid)
   $('.color').addClass(my_color)
@@ -33,6 +34,9 @@ actions['opponent_join'] = (data)->
 
 actions['waiting'] = (data)->
   $('.waiting').show()
+
+actions['dequeue'] = (data, that)->
+  that.perform 'join'
 
 actions['attack'] = (data)->
   attack_point = $('#ink-' + data.ink_type).clone()

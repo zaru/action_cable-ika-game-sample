@@ -3,18 +3,21 @@ class User
   attr_accessor :uuid, :color, :avatar
 
   def initialize(uuid)
-    @redis = Redis.new
     @uuid = uuid
     @color = color
     @avatar = avatar
   end
 
   def self.active_user_size
-    Redis.new.smembers("users").size
+    REDIS.smembers("users").size
   end
 
   def self.vacant?
     (active_user_size < 4) ? true : false
+  end
+
+  def self.carry_up
+    REDIS.lpop("waiting")
   end
 
   def params
@@ -27,13 +30,17 @@ class User
 
   def join
     return false unless User.vacant?
-    @redis.sadd("users", @uuid)
-    @redis.set(@uuid, params)
+    REDIS.sadd("users", @uuid)
+    REDIS.set(@uuid, params)
   end
 
   def leave
-    @redis.srem("users", @uuid)
-    @redis.del(@uuid)
+    REDIS.srem("users", @uuid)
+    REDIS.del(@uuid)
+  end
+
+  def waiting
+    REDIS.rpush("waiting", @uuid)
   end
 
   private

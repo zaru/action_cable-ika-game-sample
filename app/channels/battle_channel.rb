@@ -7,11 +7,14 @@ class BattleChannel < ApplicationCable::Channel
   def unsubscribed
     user = User.new(uuid)
     user.leave
+
+    carry_up_uuid = User.carry_up
+    ActionCable.server.broadcast "player_#{carry_up_uuid}", { action: "dequeue" }
   end
 
   def join(data)
     user = User.new(uuid)
-    waiting unless user.join
+    return waiting unless user.join
 
     ActionCable.server.broadcast "player_#{uuid}", data.merge(user.params)
     stream_from "battle_channel"
@@ -23,6 +26,7 @@ class BattleChannel < ApplicationCable::Channel
   end
 
   def waiting
+    User.new(uuid).waiting
     ActionCable.server.broadcast "player_#{uuid}", { action: "waiting" }
   end
 end

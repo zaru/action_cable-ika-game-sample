@@ -1,3 +1,86 @@
-// Place all the styles related to the battle controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html{color:#000;background:#FFF}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;*font-size:100%}legend{color:#000}#yui3-css-stamp.cssreset{display:none}
+
+html,body {
+  height: 100%;
+  font-family: 'ikamodoki', 'ikamodoki-eiji';
+}
+@font-face {
+  font-family: 'ikamodoki';
+  src: font-url('ikamodoki1_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'ikamodoki-eiji';
+  src: font-url('Paintball_Beta_4a.otf') format('opentype');
+}
+.waiting {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  height: 50px;
+  text-align: center;
+  font-size: 32px;
+  animation: blink 1s infinite alternate;
+}
+.profile {
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  font-size: 16px;
+  dt {
+    clear: left;
+    float: left;
+    margin: 0 10px 0 0;
+  }
+  dd {
+    float: left;
+  }
+  dd.color {
+    width: 30px;
+    height: 30px;
+  }
+}
+.avatar {
+  display: none;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+}
+.material_svgs {
+  display: none;
+}
+.gray svg path{
+  fill: gray;
+}
+.orange svg path {
+  fill: rgb(234, 90, 18);
+}
+.blue svg path {
+  fill: rgb(30, 78, 160);
+}
+.pink svg path {
+  fill: rgb(255, 0, 199);
+}
+.green svg path {
+  fill: rgb(135, 277, 0);
+}
+.mint svg path {
+  fill: rgb(0, 207, 181);
+}
+.purple svg path {
+  fill: rgb(239, 0 , 225);
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

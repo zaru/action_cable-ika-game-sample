@@ -1,6 +1,7 @@
 .material_svgs
-  #ink-1
-    == File.read(Rails.root.join('app/assets/images/1.svg'))
+  - (1..12).each do |i|
+    div id="ink-#{i}"
+      == File.read(Rails.root.join("app/assets/images/#{i}.svg"))
 
 scss:
   .material_svgs {

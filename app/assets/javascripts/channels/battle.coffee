@@ -11,7 +11,7 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
     if ("join" == data.action)
       my_color = data.color
     else
-      attack_point = $('#ink-1').clone()
+      attack_point = $('#ink-' + data.ink_type).clone()
       attack_point.attr('id', '')
       attack_point.css('position', 'absolute')
       attack_point.css('top', data.position.y - 25)
@@ -25,4 +25,5 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
         .transition({ scale: 2 }, 200, 'ease')
 
   attack: (position) ->
-    @perform 'attack', position: position, color: my_color
+    ink_type = Math.floor( Math.random() * 12) + 1
+    @perform 'attack', position: position, color: my_color, ink_type: ink_type

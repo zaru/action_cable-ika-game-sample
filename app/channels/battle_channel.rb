@@ -9,6 +9,6 @@ class BattleChannel < ApplicationCable::Channel
   end
 
   def attack(position)
-    ActionCable.server.broadcast "battle_channel", message: position
+    ActionCable.server.broadcast "battle_channel", battle: position
   end
 end

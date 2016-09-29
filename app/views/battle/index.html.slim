@@ -1,1 +1,2 @@
-= image_tag "orange-1.png", id: "orange-1", style: "display:none;"
+- %w(orange blue).each do |color|
+  = image_tag "#{color}-1.png", id: "#{color}-1", style: "display:none;"

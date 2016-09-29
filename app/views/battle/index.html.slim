@@ -1,2 +1,29 @@
-- %w(orange blue).each do |color|
-  = image_tag "#{color}-1.png", id: "#{color}-1", style: "display:none;"
+.material_svgs
+  #ink-1
+    == File.read(Rails.root.join('app/assets/images/1.svg'))
+
+scss:
+  .material_svgs {
+    display: none;
+  }
+  .gray svg path{
+    fill: gray;
+  }
+  .orange svg path {
+    fill: rgb(234, 90, 18);
+  }
+  .blue svg path {
+    fill: rgb(30, 78, 160);
+  }
+  .pink svg path {
+    fill: rgb(255, 0, 199);
+  }
+  .green svg path {
+    fill: rgb(135, 277, 0);
+  }
+  .mint svg path {
+    fill: rgb(0, 207, 181);
+  }
+  .purple svg path {
+    fill: rgb(239, 0 , 225);
+  }

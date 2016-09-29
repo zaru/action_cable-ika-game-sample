@@ -9,7 +9,7 @@ class BattleChannel < ApplicationCable::Channel
   end
 
   def join(data)
-    colors = %w(orange blue)
+    colors = %w(gray orange blue pink green mint purple)
     data["color"] = colors.sample
     ActionCable.server.broadcast "player_#{uuid}", data
     stream_from "battle_channel"

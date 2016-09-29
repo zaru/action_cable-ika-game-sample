@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root to: "battle#index"
 
+  mount ActionCable.server => '/cable'
 end

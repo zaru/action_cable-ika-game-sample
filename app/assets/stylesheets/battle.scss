@@ -12,6 +12,18 @@ html,body {
   font-family: 'ikamodoki-eiji';
   src: font-url('Paintball_Beta_4a.otf') format('opentype');
 }
+.start {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  height: 120px;
+  text-align: center;
+  font-size: 42px;
+}
 .waiting {
   display: none;
   position: absolute;

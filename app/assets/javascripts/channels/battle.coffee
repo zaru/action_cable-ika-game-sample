@@ -11,6 +11,11 @@ count_down = ()->
     clearInterval intervalID
     $('.timer-unit').hide()
 
+start_animation = ()->
+  $('.start').transition({ display: 'block', scale: 100 }, 0)
+  .transition({ scale: 1 }, 250, 'snap')
+  .transition({ opacity: 0 }, 1000, 'ease')
+
 App.battle = App.cable.subscriptions.create "BattleChannel",
   connected: ->
     @perform 'join'
@@ -65,6 +70,7 @@ actions['users'] = (data)->
   ), data.users
 
 actions['start'] = (data)->
+  start_animation()
   $('.timer').text 10
   clearTimeout intervalID if intervalID
   intervalID = setInterval count_down, 1000

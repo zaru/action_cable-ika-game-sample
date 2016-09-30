@@ -55,6 +55,8 @@ html,body {
   dd {
     font-size: 10px;
     margin: 0 0 10px 5px;
+    background: none;
+    border-radius: 0;
     svg {
       width: 25px;
       height: 25px;
@@ -101,26 +103,54 @@ html,body {
 .material_svgs {
   display: none;
 }
-.gray svg path{
-  fill: gray;
+.gray {
+  background: gray;
+  border-radius: 1000px;
+  svg path {
+    fill: gray;
+  }
 }
-.orange svg path {
-  fill: rgb(234, 90, 18);
+.orange {
+  background: rgb(234, 90, 18);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(234, 90, 18);
+  }
 }
-.blue svg path {
-  fill: rgb(30, 78, 160);
+.blue {
+  background: rgb(30, 78, 160);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(30, 78, 160);
+  }
 }
-.pink svg path {
-  fill: rgb(255, 0, 199);
+.pink {
+  background: rgb(255, 0, 199);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(255, 0, 199);
+  }
 }
-.green svg path {
-  fill: rgb(135, 277, 0);
+.green {
+  background: rgb(135, 277, 0);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(135, 277, 0);
+  }
 }
-.mint svg path {
-  fill: rgb(0, 207, 181);
+.mint {
+  background: rgb(0, 207, 181);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(0, 207, 181);
+  }
 }
-.purple svg path {
-  fill: rgb(239, 0 , 225);
+.purple {
+  background: rgb(239, 0, 225);
+  border-radius: 1000px;
+  svg path {
+    fill: rgb(239, 0, 225);
+  }
 }
 
 @keyframes blink {

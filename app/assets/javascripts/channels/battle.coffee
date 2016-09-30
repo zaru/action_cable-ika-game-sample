@@ -90,6 +90,7 @@ actions['attack'] = (data)->
   attack_point.addClass(data.color)
   attack_point.addClass('attack-log')
   $('body').append attack_point
-  attack_point.transition({ scale: 0.05 }, 250, 'snap')
-  .transition({ scale: data.scale }, 200, 'ease')
-  .transition({ y: 10 }, 500, 'ease')
+  attack_point.transition({ scale: 0.02 }, 200, 'snap')
+    .transition({ background: 'none' }, 0)
+    .transition({ scale: data.scale }, 200, 'ease')
+    .transition({ y: 15 }, 2000, 'ease')

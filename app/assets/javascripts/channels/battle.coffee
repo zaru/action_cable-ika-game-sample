@@ -30,6 +30,10 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
     ink_type = Math.floor( Math.random() * 12) + 1
     @perform 'attack', position: position, color: my_color, ink_type: ink_type
 
+  start: () ->
+    $('.attack-log').remove()
+    @perform 'start'
+
 
 actions['join'] = (data)->
   $('.waiting').hide()

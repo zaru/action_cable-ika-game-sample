@@ -22,7 +22,11 @@ class BattleChannel < ApplicationCable::Channel
 
     stream_from "battle_channel"
 
-    ActionCable.server.broadcast "battle_channel", { action: "start" } if User.all.size > (Battle.max_user - 1)
+    start if User.all.size > (Battle.max_user - 1)
+  end
+
+  def start
+    ActionCable.server.broadcast "battle_channel", { action: "start" }
   end
 
   def attack(data)

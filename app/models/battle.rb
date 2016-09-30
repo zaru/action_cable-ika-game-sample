@@ -1,7 +1,7 @@
 class Battle
 
   def self.max_user
-    6
+    32
   end
 
   def initialize

@@ -2,6 +2,8 @@
   - (1..12).each do |i|
     div id="ink-#{i}"
       == File.read(Rails.root.join("app/assets/images/#{i}.svg"))
+  div id="color"
+    == File.read(Rails.root.join("app/assets/images/my_color.svg"))
 
 .avatars
   - (1..4).each do |i|
@@ -15,6 +17,10 @@
       == File.read(Rails.root.join("app/assets/images/my_color.svg"))
     dt ID:
     dd.uuid
+
+.users
+  |サンカユーザ
+  dl
 
 .waiting
   |ユーザガ イッパイデス

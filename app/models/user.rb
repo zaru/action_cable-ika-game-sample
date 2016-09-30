@@ -4,8 +4,15 @@ class User
 
   def initialize(uuid)
     @uuid = uuid
-    @color = color
-    @avatar = avatar
+    params = REDIS.get(@uuid)
+    if params
+      params = JSON.parse(params)
+      @color = params["color"]
+      @avatar = params["avatar"]
+    else
+      @color = color
+      @avatar = avatar
+    end
   end
 
   def self.active_user_size
@@ -20,6 +27,15 @@ class User
     REDIS.lpop("waiting")
   end
 
+  def self.all
+    users = {}
+    uuids = REDIS.smembers("users")
+    uuids.each do |uuid|
+      users[uuid] = User.new(uuid).params
+    end
+    users
+  end
+
   def params
     {
       uuid: @uuid,
@@ -31,7 +47,7 @@ class User
   def join
     return false unless User.vacant?
     REDIS.sadd("users", @uuid)
-    REDIS.set(@uuid, params)
+    REDIS.set(@uuid, params.to_json)
   end
 
   def leave

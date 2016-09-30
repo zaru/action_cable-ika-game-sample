@@ -17,7 +17,9 @@ class BattleChannel < ApplicationCable::Channel
     return waiting unless user.join
 
     ActionCable.server.broadcast "player_#{uuid}", data.merge(user.params)
-    ActionCable.server.broadcast "battle_channel", { action: "opponent_join", avatar: user.params[:avatar] }
+    ActionCable.server.broadcast "player_#{uuid}", { action: "users", users: User.all }
+    # ActionCable.server.broadcast "battle_channel", { action: "opponent_join" }.merge(user.params)
+    ActionCable.server.broadcast "battle_channel", { action: "users", users: User.all }
     stream_from "battle_channel"
   end
 

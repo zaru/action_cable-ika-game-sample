@@ -1,4 +1,5 @@
 my_color = ""
+my_uuid = ""
 actions = {}
 
 App.battle = App.cable.subscriptions.create "BattleChannel",
@@ -19,6 +20,7 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
 actions['join'] = (data)->
   $('.waiting').hide()
   my_color = data.color
+  my_uuid = data.uuid
   $('.uuid').text(data.uuid)
   $('.color').addClass(my_color)
   my_avatar = $('#avatar-' + data.avatar).clone()
@@ -29,8 +31,29 @@ actions['join'] = (data)->
   my_avatar.css('display', 'block')
   $('body').append my_avatar
 
-actions['opponent_join'] = (data)->
-  console.log data
+actions['users'] = (data)->
+  $('.users dl').empty()
+  Object.keys(data.users).forEach ((key) ->
+    val = @[key]
+    if (my_uuid != val.uuid)
+      icon = $('<dt>')
+      opponent_avatar = $('#avatar-' + val.avatar).clone()
+      opponent_avatar.attr('id', '')
+      opponent_avatar.css('display', 'block')
+      icon.append opponent_avatar
+
+      color = $('<dd>')
+      color.addClass(val.color)
+      opponent_color = $('#color').clone()
+      opponent_color.attr('id', '')
+      color.append opponent_color
+
+      color.append val.uuid
+
+      $('.users dl').append icon
+      $('.users dl').append color
+    return
+  ), data.users
 
 actions['waiting'] = (data)->
   $('.waiting').show()

@@ -43,6 +43,25 @@ html,body {
     height: 30px;
   }
 }
+.users {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  dt {
+    float: left;
+    clear: left;
+    margin: 0 0 10px 0;
+  }
+  dd {
+    font-size: 10px;
+    margin: 0 0 10px 5px;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+    float: left;
+  }
+}
 .avatar {
   display: none;
   img {

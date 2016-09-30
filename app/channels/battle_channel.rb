@@ -26,7 +26,7 @@ class BattleChannel < ApplicationCable::Channel
   end
 
   def attack(data)
-    ActionCable.server.broadcast "battle_channel", data
+    ActionCable.server.broadcast "battle_channel", data.merge({ scale: [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5].sample })
   end
 
   def waiting

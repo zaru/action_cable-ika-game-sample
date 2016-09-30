@@ -20,7 +20,7 @@ class User
   end
 
   def self.vacant?
-    (active_user_size < 4) ? true : false
+    (active_user_size < Battle.max_user) ? true : false
   end
 
   def self.carry_up

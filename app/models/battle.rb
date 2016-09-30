@@ -1,5 +1,9 @@
 class Battle
 
+  def self.max_user
+    6
+  end
+
   def initialize
   end
 

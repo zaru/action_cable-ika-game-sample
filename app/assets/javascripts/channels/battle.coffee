@@ -65,11 +65,11 @@ actions['users'] = (data)->
   ), data.users
 
 actions['start'] = (data)->
-  $('.timer').text 5
+  $('.timer').text 10
   clearTimeout intervalID if intervalID
   intervalID = setInterval count_down, 1000
   clearTimeout timeoutID if timeoutID
-  timeoutID = setTimeout game_finish, 5000
+  timeoutID = setTimeout game_finish, 10000
 
 
 actions['waiting'] = (data)->

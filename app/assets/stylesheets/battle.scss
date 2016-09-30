@@ -65,9 +65,13 @@ html,body {
   }
 }
 .timer-unit {
+  position: absolute;
+  z-index: 9998;
   font-size: 16px;
   text-align: center;
-  padding: 10px;
+  top: 10px;
+  left: 0;
+  right: 0;
   .timer {
     font-size: 42px;
   }

@@ -71,6 +71,7 @@ actions['attack'] = (data)->
   attack_point.css('height', '50px')
   attack_point.css('display', 'block')
   attack_point.addClass(data.color)
+  attack_point.addClass('attack-log')
   $('body').append attack_point
   attack_point.transition({ scale: 3 }, 250, 'snap')
   .transition({ scale: 2 }, 200, 'ease')

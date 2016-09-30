@@ -62,6 +62,26 @@ html,body {
     float: left;
   }
 }
+.result {
+  z-index: 9999;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  margin: auto;
+  display: none;
+  font-size: 64px;
+  width: 600px;
+  height: 280px;
+  text-align: center;
+  .win-color {
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+  }
+}
 .avatar {
   display: none;
   img {

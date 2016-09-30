@@ -2,6 +2,15 @@ my_color = ""
 my_uuid = ""
 actions = {}
 
+intervalID = ""
+timeoutID = ""
+count_down = ()->
+  sec = $('.timer').text() - 1
+  $('.timer').text sec
+  if 0 == sec
+    clearInterval intervalID
+    $('.timer-unit').hide()
+
 App.battle = App.cable.subscriptions.create "BattleChannel",
   connected: ->
     @perform 'join'
@@ -54,6 +63,14 @@ actions['users'] = (data)->
       $('.users dl').append color
     return
   ), data.users
+
+actions['start'] = (data)->
+  $('.timer').text 5
+  clearTimeout intervalID if intervalID
+  intervalID = setInterval count_down, 1000
+  clearTimeout timeoutID if timeoutID
+  timeoutID = setTimeout game_finish, 5000
+
 
 actions['waiting'] = (data)->
   $('.waiting').show()

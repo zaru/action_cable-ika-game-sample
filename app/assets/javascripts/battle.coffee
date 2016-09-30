@@ -1,16 +1,18 @@
+playable = true
+
 $ ->
-
-  setTimeout game_finish, 5000
-
   event = `(window.ontouchstart === undefined)? 'click' : 'touchstart'`
   $('body').on event, (e)->
     if (e.originalEvent.touches)
       position = { x: e.originalEvent.touches[0].pageX, y: e.originalEvent.touches[0].pageY }
     else
       position = { x: e.pageX, y: e.pageY }
-    App.battle.attack(position)
+    if playable
+      App.battle.attack(position)
 
-game_finish = ()->
+
+@game_finish = ()->
+  playable = false
   canvas = convertCanvas()
   postCanvas(canvas)
 

@@ -18,9 +18,11 @@ class BattleChannel < ApplicationCable::Channel
 
     ActionCable.server.broadcast "player_#{uuid}", data.merge(user.params)
     ActionCable.server.broadcast "player_#{uuid}", { action: "users", users: User.all }
-    # ActionCable.server.broadcast "battle_channel", { action: "opponent_join" }.merge(user.params)
     ActionCable.server.broadcast "battle_channel", { action: "users", users: User.all }
+
     stream_from "battle_channel"
+
+    ActionCable.server.broadcast "battle_channel", { action: "start" } if User.all.size > 1
   end
 
   def attack(data)

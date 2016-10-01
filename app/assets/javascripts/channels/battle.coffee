@@ -31,7 +31,6 @@ App.battle = App.cable.subscriptions.create "BattleChannel",
     @perform 'attack', position: position, color: my_color, ink_type: ink_type
 
   start: () ->
-    $('.attack-log').remove()
     @perform 'start'
 
 
@@ -74,6 +73,7 @@ actions['users'] = (data)->
   ), data.users
 
 actions['start'] = (data)->
+  $('.attack-log').remove()
   start_animation()
   $('.timer').text 10
   clearTimeout intervalID if intervalID

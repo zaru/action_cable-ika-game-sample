@@ -46,7 +46,6 @@ postCanvas = (canvas)->
       $('.result').fadeIn()
       return
     error: (jqXHR, textStatus, errorThrown) ->
-      console.log "fail"
       return
     data: data
     dataType: 'json'
